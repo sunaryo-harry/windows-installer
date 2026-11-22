@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#0067C0"/>
+  <rect x="28" y="28" width="456" height="456" rx="76" stroke="#60B0FF" stroke-opacity="0.35" stroke-width="4"/>
+  <!-- Stylized Windows Package Cube + Download Arrow -->
+  <path d="M256 96L392 172V340L256 416L120 340V172L256 96Z" fill="#0F172A" fill-opacity="0.22"/>
+  <path d="M256 108L380 178L256 248L132 178L256 108Z" fill="#FFFFFF"/>
+  <path d="M132 194L246 258V394L132 330V194Z" fill="#DCEEFF"/>
+  <path d="M380 194L266 258V394L380 330V194Z" fill="#93C5FD"/>
+  <path d="M256 142V206M256 206L228 180M256 206L284 180" stroke="#0067C0" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

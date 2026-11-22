@@ -1,0 +1,6 @@
+{
+  "name": "WinPack Studio",
+  "description": "Aplikasi perancang Windows Installer untuk membuat skrip Inno Setup (.iss), NSIS (.nsi), WiX Toolset (.wxs MSI), simulasi wizard interaktif, dan bundel build Windows siap kompilasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
