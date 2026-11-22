@@ -18,16 +18,43 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Bun (Fast & Native for bun.lock)
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup Node.js (Fallback Runtime)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: Install Node Dependencies
-        run: npm install
+      - name: Install Dependencies
+        shell: powershell
+        run: |
+          Write-Host "Memasang dependensi proyek..."
+          try {
+              bun install --frozen-lockfile
+          } catch {
+              Write-Warning "bun install --frozen-lockfile gagal, mencoba bun install..."
+              try {
+                  bun install
+              } catch {
+                  Write-Warning "bun install gagal, mencoba npm install --legacy-peer-deps..."
+                  npm install --legacy-peer-deps
+              }
+          }
 
       - name: Build Web Application
-        run: npm run build
+        shell: powershell
+        run: |
+          Write-Host "Membangun bundle produksi aplikasi..."
+          if (Get-Command bun -ErrorAction SilentlyContinue) {
+              bun run build
+          } else {
+              npm run build
+          }
+          if (-not (Test-Path "dist\index.html")) {
+              throw "Build gagal: dist\index.html tidak ditemukan!"
+          }
+          Write-Host "Build selesai: dist telah terverifikasi." -ForegroundColor Green
 
       - name: Install Inno Setup Compiler
         run: choco install innosetup -y --no-progress
@@ -35,12 +62,17 @@ jobs:
       - name: Compile Windows Installer (.exe)
         shell: powershell
         run: |
+          New-Item -ItemType Directory -Force -Path "dist-installer" | Out-Null
           $iscc = "C:\Program Files (x86)\Inno Setup 6\iscc.exe"
           if (-not (Test-Path $iscc)) {
               $iscc = (Get-Command iscc.exe).Source
           }
           Write-Host "Mengompilasi installer dengan: $iscc"
           & "$iscc" installer.iss
+          if (-not (Test-Path "dist-installer\DaysWinInstaller-Setup.exe")) {
+              throw "Kompilasi installer gagal: DaysWinInstaller-Setup.exe tidak ditemukan!"
+          }
+          Write-Host "Kompilasi sukses! Berkas DaysWinInstaller-Setup.exe berhasil dibuat." -ForegroundColor Green
 
       - name: Upload Installer as Workflow Artifact
         uses: actions/upload-artifact@v4
@@ -68,6 +100,7 @@ jobs:
             3. Aplikasi otomatis terpasang ke Desktop dan Start Menu.
           draft: false
           prerelease: false
+          make_latest: true
           files: dist-installer/DaysWinInstaller-Setup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

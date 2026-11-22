@@ -115,7 +115,7 @@ try {
         bun run build
     } else {
         Write-Host "  -> Menggunakan NPM package manager..." -ForegroundColor Cyan
-        npm install --no-audit --no-fund
+        npm install --no-audit --no-fund --legacy-peer-deps
         npm run build
     }
     Write-Host "  -> Build selesai dengan sukses!" -ForegroundColor Green
