@@ -1,8 +1,9 @@
 # 🛠️ Days WinInstaller — Windows Installer Creator
 
 [![Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?logo=windows&logoColor=white)](https://github.com/sunaryo-harry/windows-installer)
+[![Download EXE](https://img.shields.io/badge/Download-Installer%20.exe-brightgreen?logo=windows)](https://github.com/sunaryo-harry/windows-installer/releases)
+[![Build Status](https://github.com/sunaryo-harry/windows-installer/actions/workflows/build-installer.yml/badge.svg)](https://github.com/sunaryo-harry/windows-installer/actions)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/sunaryo-harry/windows-installer?style=social)](https://github.com/sunaryo-harry/windows-installer)
 
 Aplikasi perancang **Windows Installer** modern untuk membuat skrip instalasi siap pakai:
 - 📦 **Inno Setup** (`.iss`)
@@ -12,7 +13,16 @@ Aplikasi perancang **Windows Installer** modern untuk membuat skrip instalasi si
 
 ---
 
-## ⚡ Perintah Cepat Pasang di Windows (One-Liner)
+## 📥 Unduh Installer Windows Langsung (`.exe`)
+
+Unduh berkas instalasi wizard standar Windows (`.exe`):
+👉 **[Download DaysWinInstaller-Setup.exe (Releases)](https://github.com/sunaryo-harry/windows-installer/releases)**
+
+Cukup klik ganda berkas installer tersebut untuk memasang aplikasi ke komputer Windows Anda.
+
+---
+
+## ⚡ Perintah Cepat Pasang di Windows (PowerShell One-Liner)
 
 Buka **PowerShell** (tekan `Win + X`, pilih **Terminal** atau **PowerShell**), lalu salin dan jalankan perintah berikut:
 
